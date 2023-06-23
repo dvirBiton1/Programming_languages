@@ -1,0 +1,15 @@
+#lang pl untyped
+#|
+open-list get Listof list and return Listof Number
+the idea is recursive append list to the first list until we got null
+look in the internet how to append two lists
+|#
+(: open-list : (Listof Any) -> (Listof Number))
+(define (open-list lst)
+(cond [(null? lst) null]
+      [else (append (first lst) (open-list (rest lst)))]))
+(test (open-list '((1) (2))) => '(1 2))
+(test (open-list '((1) ())) => '(1))
+(test (open-list '(() (2))) => '(2))
+(test (open-list '((1) ((2 3)))) => '(1 (2 3)))
+
